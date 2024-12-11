@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Video for Sleep Detection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            animation: backgroundAnimation 10s infinite alternate;
+            user-select: none; /* Disable text selection */
+        }
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(135deg, #89f7fe, #66a6ff); }
+            50% { background: linear-gradient(135deg, #f6d365, #fda085); }
+            100% { background: linear-gradient(135deg, #fbc2eb, #a6c1ee); }
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #34495e;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            padding: 30px;
+            animation: fadeIn 2s ease;
+        }
+        img {
+            transition: transform 0.5s;
+            animation: zoomIn 2s ease;
+        }
+        img:hover {
+            transform: scale(1.1);
+        }
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        form {
+            width: 50%;
+            margin: 30px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffffff, #ecf0f1);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: slideInFromTop 1s ease;
+        }
+        @keyframes slideInFromTop {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        input[type="file"] {
+            width: 80%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #2980b9;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background-color: #f0f8ff;
+            outline: none;
+            cursor: pointer;
+            animation: fadeIn 1s ease;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #uploadBtn {
+            background-color: #ff6347; /* Changed to a more attractive color (Tomato) */
+            width: 50%;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+            animation: bounceIn 1.5s;
+        }
+        #uploadBtn:hover {
+            animation: jello 0.9s;
+        }
+        #liveBtn {
+            background-color: #32cd32; /* Changed to a more attractive color (Lime Green) */
+            width: 50%;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+            animation: bounceIn 1.5s;
+        }
+        #liveBtn:hover {
+            animation: jello 0.9s;
+        }
+        @keyframes jello {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(0.9);
+            }
+            75% {
+                transform: scale(1.05);
+            }
+        }
+        h3 {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 2.2rem;
+            color: #34495e;
+            background: linear-gradient(135deg, #b2fefa, #89cff0);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 30px auto;
+            width: 70%;
+            animation: slideInFromLeft 1.5s ease;
+        }
+        table {
+            width: 70%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            font-family: 'Roboto', sans-serif;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s ease;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        th {
+            background-color: #3498db;
+            color: #ffffff;
+            font-size: 18px;
+        }
+        td {
+            font-size: 16px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideInFromLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes bounceIn {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+        @keyframes rotateAndBounce {
+            0% {
+                transform: rotate(0deg) translateY(0);
+                border-radius: 10%;
+            }
+            25% {
+                transform: rotate(90deg) translateY(-50px);
+                border-radius: 50%;
+            }
+            50% {
+                transform: rotate(180deg) translateY(0);
+                border-radius: 20%;
+            }
+            75% {
+                transform: rotate(270deg) translateY(-30px);
+                border-radius: 40%;
+            }
+            100% {
+                transform: rotate(360deg) translateY(0);
+                border-radius: 10%;
+            }
+        }
+        #processingOverlay {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+        }
+        #processingOverlay .box {
+            width: 100px;
+            height: 100px;
+            background-color: #ff6347;
+            animation: rotateAndBounce 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>Smart Student Behaviour Monitoring System</h1>
+    <center>
+        <img src="{{ url_for('static', filename='images/sms.png') }}" alt="Example Image" width="400">
+    </center>
+    <br>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <h2 style="color: #34495e;">Upload and Process Video</h2>
+        <input type="file" name="file" accept="video/*" required>
+        <button id="uploadBtn" type="submit">Upload and Process</button>
+    </form>
+
+    <div id="processingOverlay">
+        <div class="box"></div>
+        <p>Processing your video, please wait...</p>
+    </div>
+
+    <center>
+        <a href="/live">
+            <button id="liveBtn">Open Live Video</button>
+        </a>
+    </center>
+
+    <h3>PES INSTITUTE OF TECHNOLOGY AND MANAGEMENT</h3>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>USN</th>
+        </tr>
+        <tr>
+            <td>Naveen MS</td>
+            <td>4PM21CS049</td>
+        </tr>
+        <tr>
+            <td>Syed Waseem</td>
+            <td>4PM22CS411</td>
+        </tr>
+        <tr>
+            <td>Uzair Ahmad</td>
+            <td>4PM21CS111</td>
+        </tr>
+    </table>
+
+    <script>
+        const uploadForm = document.querySelector('form');
+        const processingOverlay = document.getElementById('processingOverlay');
+
+        uploadForm.addEventListener('submit', function() {
+            processingOverlay.style.display = 'flex';
+        });
+
+        // Disallow screenshot and redirect immediately without warning
+        function preventScreenshot() {
+            alert('Screenshot is not allowed. Redirecting to another page.');
+            window.location.href = 'https://www.google.com?reason=screenshot_attempt';
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'PrintScreen') {
+                preventScreenshot();
+                event.preventDefault();
+            }
+        });
+
+        document.addEventListener('keyup', function(event) {
+            if (event.key === 'PrintScreen') {
+                preventScreenshot();
+                event.preventDefault();
+            }
+        });
+
+        document.addEventListener('blur', function() {
+            preventScreenshot();
+        });
+    </script>
+</body>
+</html>
