@@ -53,6 +53,5 @@ Technologies Used
 Python (NumPy, Pandas, TensorFlow/Keras)
 Data visualization libraries (Matplotlib, Seaborn)
 Deep learning frameworks (TensorFlow/Keras)
-Contributors
-Your Name - [syedwaseemi850@gmail.com]
+Contributors [syedwaseemi850@gmail.com]
 For any questions, please contact the contributor above.
